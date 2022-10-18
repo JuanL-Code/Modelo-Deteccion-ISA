@@ -15,5 +15,14 @@ Se busca entonces hacer una guia que permita a cualquier usuario crear un modelo
 El algoritmo de deteccion y reconocimiento corre en un framework llamado YOLO el cual funciona por medio de una ingesta de imagenes y un entrenamiento previo en nube sin la necesidad de usar recursos propios como CPU o GPU
 
 # Funcionamiento
-1. Para la creacion de un modelo de IA enfocado a un modo de falla o cualquier otro uso se comienza haciendo una recoleccion minima de unas 100 images
-2. Estas imagenes se exportaran a un software basado en python llamado "LabelIMG" en el cual se hace una seleccion de la zona que corresponde a la indicada y se le da un nombre de clase, lo que hace LabelIMG es guardar un archivo .txt el cual guarda las posiciones cartesianas dentro de esa imagen de tal manera que hace una correlacion 
+1. Para la creacion de un modelo de IA enfocado a un modo de falla o cualquier otro uso se comienza haciendo una recoleccion minima de unas 100 images(Ej: Si se desea un modelo de IA que detecte y reconozca piezas corroidas debemos recolectar 100 imagenes minimo de este modo de falla)![evidencias 1](https://user-images.githubusercontent.com/68828858/196544265-79db9f5d-6b46-4c89-9cd0-43f9718eb1eb.PNG)
+
+2. Estas imagenes se exportaran a un software basado en python llamado "LabelIMG" en el cual se hace una seleccion de la zona que corresponde a la indicada y se le da un nombre de clase, lo que hace LabelIMG es guardar un archivo .txt el cual guarda las posiciones cartesianas dentro de esa imagen de tal manera que hace una correlacion entre la imagen y este archivo txt. 
+![evidencia 3](https://user-images.githubusercontent.com/68828858/196544469-35d10ad4-8001-4196-b3bc-b644e605f649.PNG)
+
+3. Despues de hacer la creacion de los recuadros dentro de LabelIMG nos quedara una carpeta en la cual estaran todas. Cada imagen genera un archivo txt dentro del cual se ubica por cada recuadro un par organizado de coordenadas. En el ejemplo pasado mostrabamos dentro de labelIMG como etiquetabamos dentro de la imagen #145, el resultado sera entonces un txt homonimo con los 5 taggeos correspondientes, el numero cero al inicio de cada coordenada hace refentencia a la clase a la cual corresponde ese taggeo, en caso de tener dentro de un mismo modelo mas de una clase este numero se modificara(Ej. Si dentro de un modelo queremos identificar piezas corroidas y egrietadas).![evidencia 2](https://user-images.githubusercontent.com/68828858/196545354-c832cd60-ad4d-4021-ab23-0f9037a4bc59.PNG)
+
+4. Una vez finalizado estos procedimientos, haremos de la carpeta un .zip el cual utilizaremos dentro de Google Colab para hacer un entrenamiento y uso en nube, este .zip ya pasara entonces por unos pasos de codificacion que se explican a mas detalle en la seccion de procedimiento para entonces proceder con las descompresion del archivo y la posterior puesta en marcha del modelo en nube.
+
+![evidencias 4](https://user-images.githubusercontent.com/68828858/196546488-db3e6c71-ebf8-4dda-89c3-57d03904d99f.PNG)
+
