@@ -26,3 +26,7 @@ El algoritmo de deteccion y reconocimiento corre en un framework llamado YOLO el
 
 ![evidencias 4](https://user-images.githubusercontent.com/68828858/196546488-db3e6c71-ebf8-4dda-89c3-57d03904d99f.PNG)
 
+5. Una vez hacemos el procedimiento de entrenamiento en nube cargamos una imagen de prueba, la imprimimos y nos lanza el resultado final
+![evidencia  5](https://user-images.githubusercontent.com/68828858/196548210-86d0cba5-5aa4-4ef1-963b-c551de400e91.PNG)
+![evidencia 6](https://user-images.githubusercontent.com/68828858/196548216-52d0444b-7920-4f16-a263-badaf6051349.PNG)
+
