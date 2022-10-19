@@ -86,7 +86,7 @@ Crearemos una cuenta de Google colab y copiaremos el siguiente notebook [Noteboo
 
 ![evidencia 11](https://user-images.githubusercontent.com/68828858/196731777-6fda6403-76ce-46fa-8fea-8f8978b26440.PNG)
 
-2. Cargar los datos
+## 5.2 Cargar los datos
 Primero subiremos a google colab el .zip "train_data", una vez cargado correremos la linea de cargar los datos
 
 ```
@@ -95,7 +95,7 @@ Primero subiremos a google colab el .zip "train_data", una vez cargado correremo
 
 ```
 
-3. Creamos un archivo de configuracion
+## 5.3 Creamos un archivo de configuracion
 En Visual Studio/Sublime/Notepad++/Bloc de notas creamos un archivo de configuracion con el siguiente codigo
 
 ```
@@ -113,7 +113,7 @@ names: ['Aislador']  # class names
 Este archivo cambia en base a las necesidades y usos que le den al modelo, en este caso los parametros a cambiar seria el numero de clases y el nombre de las mismas
 Estes archivo lo guardamos como "customdata.yaml" y debe ser de formato en texto plano y lo subiremos dentro de google colab en la carpeta yolov5/data
 
-4. Entrenamiento
+## 5.4 Entrenamiento
 Corremos la linea de entrenamiento, en este caso use un modelo de 163 imagenes y lo entrene durante 20 ciclos, tardo 1 hora, se puede hacer pruebas en base a cada caso, lo importante es estar por encima de un numero de ciclos para conseguir un entrenamiento bueno pero tampoco superar determinado nivel por uso de tiempo y recursos y adicional evitando un overfitting del modelo.
 
 ```
@@ -121,5 +121,24 @@ Corremos la linea de entrenamiento, en este caso use un modelo de 163 imagenes y
 !python train.py --img 640 --batch 4 --epochs 20 --data customdata.yaml --weights yolov5s.pt --cache
 
 ```
+
+## 5.6 Verificacion
+
+Una vez finalizado el entrenamiento subiremos a google colab una imagen de prueba llamada test.jpg, al estar cargadas corremos las siguientes lineas 
+
+```
+
+-!python detect.py --weights runs/train/exp/weights/last.pt --img 640 --conf 0.25 --source "../test.jpg"
+display.Image(filename='../test.jpg', width=600)
+
+```
+
+Estamos cargando la ruta del modelo entrenado y de la imagen de test, una vez finalizado iremos a yolov5/runs/detect/exp/test.jpg
+Ese sera el resultado, podemos hacer diferentes test solo debemos modificar el parametro donde --source "../test(X).jpg y dado que soo carga el modelo una vez no se requiere hacer un entrenamiento nuevo
+
+
+![evidencia 7](https://user-images.githubusercontent.com/68828858/196739515-976bb824-f720-4bd0-bf05-3045160260be.PNG)
+
+
 
 
