@@ -146,6 +146,9 @@ Ese sera el resultado, podemos hacer diferentes test solo debemos modificar el p
 
 ![evidencia 7](https://user-images.githubusercontent.com/68828858/196739515-976bb824-f720-4bd0-bf05-3045160260be.PNG)
 
+Segundo test:
 
+![EVIDENCIA 13](https://user-images.githubusercontent.com/68828858/196774791-ff9d352a-cf1b-426c-a352-9cf893b9f36e.PNG)
 
+![60767e66-9c3e-4924-9137-bba1fa49f6be](https://user-images.githubusercontent.com/68828858/196775174-e07afbb4-7825-4917-a3a1-0d5fdd0e961b.jpg)
 
