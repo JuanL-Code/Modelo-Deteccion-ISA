@@ -30,3 +30,96 @@ El algoritmo de deteccion y reconocimiento corre en un framework llamado YOLO el
 ![evidencia  5](https://user-images.githubusercontent.com/68828858/196548210-86d0cba5-5aa4-4ef1-963b-c551de400e91.PNG)
 ![evidencia 6](https://user-images.githubusercontent.com/68828858/196548216-52d0444b-7920-4f16-a263-badaf6051349.PNG)
 
+# Paso a Paso
+## 1. Instalamos el software 
+
+```
+
+$ git clone https://github.com/tzutalin/labelImg
+$ conda install pyqt=5
+$ conda install -c anaconda lxml
+$ cd labelImg
+$ pyrcc5 -o libs/resources.py resources.qrc
+$ python labelImg.py
+
+```
+Al correr la ultima linea nos abrira el software de etiquetado 
+## 2. Estructura carpetas
+Dentro de la carpeta clonada crearemos la siguiente estructura de carpetas
+
+```
+
+--train_data
+  -- images
+      --train
+      --val
+  -- labels
+      --train
+      --val
+      
+```
+
+Una vez hecha la creacion de las carpetas, guardaremos en train_data/images/train las imagenes que deseamos etiquetar en formato jpg o jpeg y copiamos las imagenes tambien en train_data/images/val. 
+Dentro de LabelImg en la barra izquierda seleccionaremos "Open Dir" y abriremos la carpeta  train_data/images/train y en la opcion de "Change save dir" seleccionaremos train_data/labels/train para guardar todos los archivos txt de las etiquetas.
+Adiconal en la barra superior seleccionaremos el menu de view y daremos click a la opcion de "Auto Save mode"
+
+De esta manera entonces nos quedaran cargadas todas la imagenes y tambien la ruta de guardado automatico de los taggeos que hagamos 
+
+![evidencia 9](https://user-images.githubusercontent.com/68828858/196728660-33165ee9-c86a-44bc-9249-7325e1aecab2.PNG)
+
+# 3. Taggeo
+
+Para taggear cada imagen usamos las siguientes teclas: con w hacemos el uso del cuadro para seleccionar la zona que deseamos etiquetar, le damos un nombre a la etiqueta y despues al boton de next para continuar con la siguiente imagen, asi hasta complementarlas todas
+
+# 4. Preparacion de los archivos
+
+Una vez listo el proceso de taggeo nos quedara en la carpeta train_data/labels/train todos los archivos txt los cuales copiaremos a la carpeta train_data/labels/val
+
+Ahora, la carpeta train_data la comprimiremos para ser usada dentro de google colab
+
+# 5. Google Colab
+
+Crearemos una cuenta de Google colab y copiaremos el siguiente notebook [Notebook](https://colab.research.google.com/drive/1NR6DdW_B0pYFanj4TB9emuKE3XI-T311?usp=sharing) como copia en nuestro drive dando en el menu de arhivo/guardar una copia en drive
+
+## 5.1 Como correr el notebook
+1. Primero daremos click en run setup para cargar e instalar el framework dentro de nuestro entorno virtual
+
+![evidencia 11](https://user-images.githubusercontent.com/68828858/196731777-6fda6403-76ce-46fa-8fea-8f8978b26440.PNG)
+
+2. Cargar los datos
+Primero subiremos a google colab el .zip "train_data", una vez cargado correremos la linea de cargar los datos
+
+```
+
+!unzip -q ../train_data.zip -d ../
+
+```
+
+3. Creamos un archivo de configuracion
+En Visual Studio/Sublime/Notepad++/Bloc de notas creamos un archivo de configuracion con el siguiente codigo
+
+```
+path: ../train_data  # dataset root dir
+train: ../train_data/images/train/  # train images (relative to 'path') 128 images
+val: ../train_data/images/val/  # val images (relative to 'path') 128 images
+test:  # test images (optional)
+
+# Classes
+nc: 1  # number of classes
+names: ['Aislador']  # class names
+
+```
+
+Este archivo cambia en base a las necesidades y usos que le den al modelo, en este caso los parametros a cambiar seria el numero de clases y el nombre de las mismas
+Estes archivo lo guardamos como "customdata.yaml" y debe ser de formato en texto plano y lo subiremos dentro de google colab en la carpeta yolov5/data
+
+4. Entrenamiento
+Corremos la linea de entrenamiento, en este caso use un modelo de 163 imagenes y lo entrene durante 20 ciclos, tardo 1 hora, se puede hacer pruebas en base a cada caso, lo importante es estar por encima de un numero de ciclos para conseguir un entrenamiento bueno pero tampoco superar determinado nivel por uso de tiempo y recursos y adicional evitando un overfitting del modelo.
+
+```
+
+!python train.py --img 640 --batch 4 --epochs 20 --data customdata.yaml --weights yolov5s.pt --cache
+
+```
+
+
