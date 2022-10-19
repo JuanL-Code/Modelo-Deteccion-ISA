@@ -67,9 +67,13 @@ De esta manera entonces nos quedaran cargadas todas la imagenes y tambien la rut
 
 ![evidencia 9](https://user-images.githubusercontent.com/68828858/196728660-33165ee9-c86a-44bc-9249-7325e1aecab2.PNG)
 
+
 # 3. Taggeo
 
 Para taggear cada imagen usamos las siguientes teclas: con w hacemos el uso del cuadro para seleccionar la zona que deseamos etiquetar, le damos un nombre a la etiqueta y despues al boton de next para continuar con la siguiente imagen, asi hasta complementarlas todas
+
+![evidencia 10](https://user-images.githubusercontent.com/68828858/196740017-8ff14419-eb83-4434-a4be-8fc089149f20.PNG)
+
 
 # 4. Preparacion de los archivos
 
