@@ -81,6 +81,9 @@ Una vez listo el proceso de taggeo nos quedara en la carpeta train_data/labels/t
 
 Ahora, la carpeta train_data la comprimiremos para ser usada dentro de google colab
 
+![evidencia 12](https://user-images.githubusercontent.com/68828858/196740632-a6fb1f15-2981-4db8-885c-9d6ec83472b7.PNG)
+
+
 # 5. Google Colab
 
 Crearemos una cuenta de Google colab y copiaremos el siguiente notebook [Notebook](https://colab.research.google.com/drive/1NR6DdW_B0pYFanj4TB9emuKE3XI-T311?usp=sharing) como copia en nuestro drive dando en el menu de arhivo/guardar una copia en drive
